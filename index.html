@@ -3,118 +3,244 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OGNJEN AI V1 // TESLA KERNEL</title>
+    <title>Ognjen AI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { 
-            --neon: #00ffcc; 
-            --bg: #0d1117; 
-            --card: #161b22; 
-            --font: 'Consolas', 'Courier New', monospace; 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
-        body { 
-            background: var(--bg); 
-            color: #c9d1d9; 
-            font-family: var(--font); 
-            margin: 0; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            height: 100vh; 
-            overflow: hidden; 
+
+        body {
+            background-color: #f9f9f9;
+            background-image: radial-gradient(#d1d1d1 1px, transparent 1px);
+            background-size: 40px 40px; /* Tačkasta pozadina kao na slici */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            color: #1a1a1a;
         }
-        .terminal { 
-            width: 90%; 
-            max-width: 900px; 
-            height: 70vh; 
-            background: var(--card); 
-            border: 1px solid #30363d; 
-            border-radius: 10px; 
-            display: flex; 
-            flex-direction: column; 
-            box-shadow: 0 0 50px rgba(0, 255, 204, 0.1); 
+
+        /* Logo sekcija */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
         }
-        .top-bar { 
-            background: #010409; 
-            padding: 12px 20px; 
-            border-bottom: 1px solid #30363d; 
-            font-size: 13px; 
-            color: var(--neon); 
-            border-radius: 10px 10px 0 0; 
+
+        .logo-text {
+            font-size: 48px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
-        #chat-log { 
-            flex: 1; 
-            padding: 25px; 
-            overflow-y: auto; 
-            display: flex; 
-            flex-direction: column; 
-            gap: 15px; 
-            scroll-behavior: smooth; 
+
+        .logo-icon {
+            font-size: 32px;
         }
-        .ai-msg { color: var(--neon); line-height: 1.5; }
-        .user-msg { color: #ffffff; font-weight: bold; }
-        .input-area { 
-            background: #010409; 
-            padding: 20px; 
-            display: flex; 
-            align-items: center; 
-            border-top: 1px solid #30363d; 
-            border-radius: 0 0 10px 10px; 
+
+        .from-text {
+            font-size: 14px;
+            color: #666;
+            font-weight: 500;
         }
-        input { 
-            flex: 1; 
-            background: transparent; 
-            border: none; 
-            color: white; 
-            outline: none; 
-            font-family: var(--font); 
-            font-size: 16px; 
+
+        .hero-title {
+            font-size: 42px;
+            font-weight: 700;
+            margin-top: 30px;
+            text-align: center;
+            line-height: 1.2;
         }
-        .prefix { color: var(--neon); margin-right: 15px; font-weight: bold; }
+
+        /* Kontejner za chat log (nevidljiv dok nema poruka) */
+        #chat-log {
+            width: 100%;
+            max-width: 700px;
+            max-height: 300px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .message {
+            padding: 12px 18px;
+            border-radius: 15px;
+            max-width: 85%;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .user-msg {
+            align-self: flex-end;
+            background-color: #000;
+            color: #fff;
+        }
+
+        .ai-msg {
+            align-self: flex-start;
+            background-color: #fff;
+            border: 1px solid #e5e5e5;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        /* Input kontejner - Manus stil */
+        .input-container {
+            width: 90%;
+            max-width: 800px;
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 24px;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            position: relative;
+        }
+
+        .action-btns {
+            display: flex;
+            gap: 12px;
+            margin-right: 15px;
+            color: #888;
+        }
+
+        .action-btns i {
+            cursor: pointer;
+            font-size: 18px;
+            transition: color 0.2s;
+        }
+
+        .action-btns i:hover { color: #000; }
+
+        input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 17px;
+            color: #333;
+            padding: 10px 0;
+        }
+
+        input::placeholder { color: #aaa; }
+
+        .right-btns {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: #888;
+        }
+
+        .send-btn {
+            background: #e0e0e0;
+            color: #fff;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .send-btn.active {
+            background: #000;
+        }
     </style>
 </head>
 <body>
 
-    <div class="terminal">
-        <div class="top-bar">ognjen-ai-v1@tesla-kernel: ~ / status: online</div>
-        <div id="chat-log">
-            <div class="ai-msg">> SISTEM SPREMAN. Unesite komandu za konstrukciju hardvera ili softvera...</div>
+    <div class="header">
+        <div class="logo-text">
+            <i class="fa-solid fa-hand-sparkles logo-icon"></i>
+            ognjen ai
         </div>
-        <div class="input-area">
-            <span class="prefix">>>></span>
-            <input type="text" id="userInput" autofocus placeholder="npr. napravi virtuelni ram...">
+        <div class="from-text">from Tesla Architecture</div>
+    </div>
+
+    <div class="hero-title" id="heroText">
+        Leave all to Ognjen<br>
+        Your AI agent
+    </div>
+
+    <div id="chat-log"></div>
+
+    <div class="input-container">
+        <div class="action-btns">
+            <i class="fa-solid fa-plus"></i>
+            <i class="fa-solid fa-bolt"></i>
+            <i class="fa-solid fa-folder"></i>
+        </div>
+        
+        <input type="text" id="userInput" placeholder="Give Ognjen a task to work on..." autocomplete="off">
+        
+        <div class="right-btns">
+            <i class="fa-solid fa-microphone"></i>
+            <div class="send-btn" id="sendBtn">
+                <i class="fa-solid fa-arrow-up"></i>
+            </div>
         </div>
     </div>
 
     <script>
         const input = document.getElementById('userInput');
+        const sendBtn = document.getElementById('sendBtn');
         const log = document.getElementById('chat-log');
+        const hero = document.getElementById('heroText');
 
-        input.addEventListener('keypress', async (e) => {
-            if (e.key === 'Enter' && input.value.trim() !== '') {
-                const val = input.value;
-                input.value = '';
-                
-                // 1. Prikaži šta je korisnik napisao
-                log.innerHTML += `<div class="user-msg">>>> ${val}</div>`;
-                log.scrollTop = log.scrollHeight;
+        // URL tvoje funkcije sa slike {875FEBD3-3F41-4AF6-9057-367A47FE7DB8}.jpg
+        const modalUrl = "https://ognjenlapcevic133--ognjen-tesla-god-mode-start.modal.run/api/chat?q=";
 
-                // 2. Tvoj Modal URL sa slike {4D666D05-5D61-4B9C-9379-19D3ADA3FCA2}.png
-                const modalUrl = "https://ognjenlapcevic133--ognjen-tesla-god-mode-start.modal.run/api/chat?q=";
-                
-                try {
-                    // 3. Pozovi tvoj AI mozak na Modalu
-                    const response = await fetch(modalUrl + encodeURIComponent(val));
-                    const data = await response.json();
-                    
-                    // 4. Prikaži odgovor koji AI generiše (sakriven od pogleda)
-                    log.innerHTML += `<div class="ai-msg">> ${data.response || data.odgovor}</div>`;
-                } catch (err) {
-                    log.innerHTML += `<div style="color: #ff4444;">> GREŠKA: Kernel nije prepoznat. Proveri Modal deployment.</div>`;
-                    console.error("Greška:", err);
-                }
-                log.scrollTop = log.scrollHeight;
+        // Promena boje dugmeta dok kucaš
+        input.addEventListener('input', () => {
+            if (input.value.trim() !== "") {
+                sendBtn.classList.add('active');
+            } else {
+                sendBtn.classList.remove('active');
             }
         });
+
+        async function sendMessage() {
+            const val = input.value.trim();
+            if (val === "") return;
+
+            // Sakrij hero tekst kad krene chat
+            hero.style.display = 'none';
+            
+            // Prikaži korisničku poruku
+            log.innerHTML += `<div class="message user-msg">${val}</div>`;
+            input.value = '';
+            sendBtn.classList.remove('active');
+            log.scrollTop = log.scrollHeight;
+
+            try {
+                const response = await fetch(modalUrl + encodeURIComponent(val));
+                const data = await response.json();
+                
+                // Prikaži AI odgovor (koristimo 'odgovor' iz tvog Python koda)
+                log.innerHTML += `<div class="message ai-msg">${data.odgovor}</div>`;
+            } catch (err) {
+                log.innerHTML += `<div class="message ai-msg" style="color: red;">Greška: Konekcija sa kernelom nije uspela.</div>`;
+            }
+            log.scrollTop = log.scrollHeight;
+        }
+
+        input.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendMessage();
+        });
+
+        sendBtn.addEventListener('click', sendMessage);
     </script>
 </body>
 </html>
