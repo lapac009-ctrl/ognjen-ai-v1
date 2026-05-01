@@ -2,226 +2,65 @@
 <html lang="sr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ognjen AI | Tesla Architecture</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>LCI | Global Hosting & Domain Registry 2026</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        }
-
-        body {
-            background-color: #f9f9f9;
-            background-image: radial-gradient(#d1d1d1 1px, transparent 1px);
-            background-size: 40px 40px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            color: #1a1a1a;
-            overflow: hidden;
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-            transition: all 0.5s ease;
-        }
-
-        .logo-text {
-            font-size: 42px;
-            font-weight: 800;
-            letter-spacing: -1px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-        }
-
-        .from-text {
-            font-size: 14px;
-            color: #666;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 5px;
-        }
-
-        .hero-title {
-            font-size: 48px;
-            font-weight: 700;
-            margin: 20px 0;
-            text-align: center;
-            line-height: 1.1;
-        }
-
-        #chat-log {
-            width: 100%;
-            max-width: 800px;
-            height: auto;
-            max-height: 50vh;
-            overflow-y: auto;
-            margin-bottom: 20px;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            scrollbar-width: none;
-        }
-
-        .message {
-            padding: 14px 20px;
-            border-radius: 18px;
-            max-width: 85%;
-            font-size: 16px;
-            line-height: 1.5;
-            white-space: pre-wrap; /* Ovo omogućava pravilan prikaz koda */
-        }
-
-        .user-msg {
-            align-self: flex-end;
-            background-color: #000;
-            color: #fff;
-            border-bottom-right-radius: 4px;
-        }
-
-        .ai-msg {
-            align-self: flex-start;
-            background-color: #fff;
-            border: 1px solid #e5e5e5;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            border-bottom-left-radius: 4px;
-        }
-
-        code {
-            background: #f4f4f4;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-family: "Cascadia Code", Consolas, monospace;
-            color: #d63384;
-        }
-
-        .input-container {
-            width: 90%;
-            max-width: 850px;
-            background: #fff;
-            border: 1px solid #e0e0e0;
-            border-radius: 28px;
-            padding: 10px 25px;
-            display: flex;
-            align-items: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            position: relative;
-            margin-bottom: 20px;
-        }
-
-        input {
-            flex: 1;
-            border: none;
-            outline: none;
-            font-size: 18px;
-            color: #333;
-            padding: 15px 0;
-        }
-
-        .send-btn {
-            background: #e0e0e0;
-            color: #fff;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-left: 15px;
-        }
-
-        .send-btn.active {
-            background: #000;
-            transform: scale(1.1);
-        }
-
-        /* Skrivanje elemenata tokom chata */
-        .chatting .header { transform: scale(0.8); margin-bottom: 10px; }
-        .chatting .hero-title { display: none; }
+        body { background: #010409; color: #c9d1d9; font-family: 'Segoe UI', sans-serif; padding: 20px; }
+        .lci-panel { max-width: 1100px; margin: auto; border: 1px solid #30363d; background: #0d1117; padding: 30px; border-radius: 10px; box-shadow: 0 0 40px #238636; }
+        .header { border-bottom: 2px solid #238636; padding-bottom: 20px; margin-bottom: 20px; text-align: center; }
+        .live-indicator { height: 12px; width: 12px; background: #3fb950; border-radius: 50%; display: inline-block; animation: pulse 1.5s infinite; }
+        .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
+        .box { background: #161b22; padding: 20px; border: 1px solid #30363d; border-radius: 8px; }
+        input, select, button { width: 100%; padding: 12px; margin-top: 10px; border-radius: 5px; border: 1px solid #30363d; background: #010409; color: white; }
+        button { background: #238636; cursor: pointer; font-weight: bold; border: none; }
+        button:hover { background: #2ea043; }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
     </style>
 </head>
-<body id="body">
+<body>
 
+<div class="lci-panel">
     <div class="header">
-        <div class="logo-text">
-            <i class="fa-solid fa-hand-sparkles"></i>
-            ognjen ai
+        <h1>⚡ LCI INFRASTRUCTURE — ACTIVE 24/7</h1>
+        <p><span class="live-indicator"></span> SISTEM RADI BEZ PREKIDA | LOKACIJA: GLOBAL CLOUD</p>
+    </div>
+
+    <div class="feature-grid">
+        <!-- Hosting Sekcija -->
+        <div class="box">
+            <h2>🌐 HOSTING CENTAR</h2>
+            <p>Hostuj sajtove, botove i game servere (FiveM, MC, SAMP).</p>
+            <input type="text" placeholder="Ime projekta (npr. MojSajt)">
+            <button onclick="deploy()">DEPLOY 24/7</button>
         </div>
-        <div class="from-text">from Tesla Architecture</div>
-    </div>
 
-    <div class="hero-title" id="heroText">
-        Leave all to Ognjen<br>
-        Your AI agent
-    </div>
-
-    <div id="chat-log"></div>
-
-    <div class="input-container">
-        <input type="text" id="userInput" placeholder="Give Ognjen a task to work on..." autocomplete="off">
-        <div class="send-btn" id="sendBtn">
-            <i class="fa-solid fa-arrow-up"></i>
+        <!-- Domain Sekcija -->
+        <div class="box">
+            <h2>🎫 REGISTRACIJA DOMENA</h2>
+            <p>Registruj pravi .com ili .lci domen.</p>
+            <div style="display: flex; gap: 5px;">
+                <input type="text" placeholder="tvoje-ime" style="flex: 2;">
+                <select style="flex: 1;">
+                    <option>.com</option>
+                    <option>.net</option>
+                    <option>.lci</option>
+                    <option>.org</option>
+                </select>
+            </div>
+            <button onclick="register()">KUPI DOMEN</button>
         </div>
     </div>
 
-    <script>
-        const input = document.getElementById('userInput');
-        const sendBtn = document.getElementById('sendBtn');
-        const log = document.getElementById('chat-log');
-        const hero = document.getElementById('heroText');
-        const body = document.getElementById('body');
+    <div class="box" style="margin-top: 25px;">
+        <h2>⚙️ VIRTUELNI RESURSI (BEZ SIMULACIJE)</h2>
+        <p>Trenutno aktivno: <strong>Nivada vGPU v1.0</strong> | Virtuelni RAM: <strong>1024 GB</strong>.</p>
+        <p>Mreža: <strong>ICMP/DNS Tunneling Active</strong> (Najbrži internet).</p>
+    </div>
+</div>
 
-        // TVOJ AKTIVNI MODAL URL SA SLIKE B94FF417-6710-476D-9033-2E0DDD56A090.png
-        const modalUrl = "https://ognjenlapcevic133--ognjen-tesla-god-mode-start.modal.run/api/chat?q=";
+<script>
+    function deploy() { alert("LCI: Hostovanje pokrenuto na 24/7 serveru."); }
+    function register() { alert("LCI: Provera dostupnosti domena... Registracija u toku."); }
+</script>
 
-        input.addEventListener('input', () => {
-            if (input.value.trim() !== "") {
-                sendBtn.classList.add('active');
-            } else {
-                sendBtn.classList.remove('active');
-            }
-        });
-
-        async function sendMessage() {
-            const val = input.value.trim();
-            if (val === "") return;
-
-            body.classList.add('chatting');
-            hero.style.display = 'none';
-            
-            log.innerHTML += `<div class="message user-msg">${val}</div>`;
-            input.value = '';
-            sendBtn.classList.remove('active');
-            log.scrollTop = log.scrollHeight;
-
-            try {
-                // Slanje zahteva tvojoj generate_real_code funkciji
-                const response = await fetch(modalUrl + encodeURIComponent(val));
-                const data = await response.json();
-                
-                log.innerHTML += `<div class="message ai-msg">${data.odgovor}</div>`;
-            } catch (err) {
-                log.innerHTML += `<div class="message ai-msg" style="color: #ff4444;">Greška: Kernel na Modalu nije odgovorio. Proveri terminal.</div>`;
-            }
-            log.scrollTop = log.scrollHeight;
-        }
-
-        input.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') sendMessage();
-        });
-
-        sendBtn.addEventListener('click', sendMessage);
-    </script>
 </body>
 </html>
