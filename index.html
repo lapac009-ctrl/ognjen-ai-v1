@@ -2,64 +2,73 @@
 <html lang="sr">
 <head>
     <meta charset="UTF-8">
-    <title>LCI | Global Hosting & Domain Registry 2026</title>
+    <title>LCI Cloud | What are we making?</title>
     <style>
-        body { background: #010409; color: #c9d1d9; font-family: 'Segoe UI', sans-serif; padding: 20px; }
-        .lci-panel { max-width: 1100px; margin: auto; border: 1px solid #30363d; background: #0d1117; padding: 30px; border-radius: 10px; box-shadow: 0 0 40px #238636; }
-        .header { border-bottom: 2px solid #238636; padding-bottom: 20px; margin-bottom: 20px; text-align: center; }
-        .live-indicator { height: 12px; width: 12px; background: #3fb950; border-radius: 50%; display: inline-block; animation: pulse 1.5s infinite; }
-        .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
-        .box { background: #161b22; padding: 20px; border: 1px solid #30363d; border-radius: 8px; }
-        input, select, button { width: 100%; padding: 12px; margin-top: 10px; border-radius: 5px; border: 1px solid #30363d; background: #010409; color: white; }
-        button { background: #238636; cursor: pointer; font-weight: bold; border: none; }
-        button:hover { background: #2ea043; }
-        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+        :root { --bg: #0a0a0c; --card: #111114; --border: #1d1d21; --text: #888; --white: #ffffff; --accent: #238636; }
+        body { background: var(--bg); color: var(--white); font-family: 'Inter', sans-serif; display: flex; justify-content: center; padding: 50px; }
+        .container { max-width: 900px; width: 100%; }
+        h2 { text-align: center; color: #ededed; font-size: 28px; margin-bottom: 30px; }
+        .server-input { width: 100%; background: var(--card); border: 1px solid var(--border); padding: 15px; border-radius: 8px; color: white; margin-bottom: 20px; }
+        
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .card { background: var(--card); border: 1px solid var(--border); padding: 25px; border-radius: 12px; cursor: pointer; transition: 0.3s; position: relative; }
+        .card:hover { border-color: var(--accent); background: #16161a; }
+        .card h3 { margin: 0 0 10px 0; display: flex; align-items: center; gap: 10px; }
+        .card p { color: var(--text); font-size: 14px; line-height: 1.5; }
+        
+        /* Modal za Deploy */
+        .modal { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: var(--card); border: 1px solid var(--border); padding: 30px; border-radius: 15px; z-index: 100; width: 500px; box-shadow: 0 0 50px rgba(0,0,0,0.8); }
+        textarea { width: 100%; height: 150px; background: #050505; color: #3fb950; border: 1px solid var(--border); border-radius: 5px; padding: 10px; font-family: monospace; margin: 15px 0; }
+        .deploy-btn { width: 100%; background: var(--accent); color: white; border: none; padding: 12px; border-radius: 8px; cursor: pointer; font-weight: bold; }
     </style>
 </head>
 <body>
 
-<div class="lci-panel">
-    <div class="header">
-        <h1>⚡ LCI INFRASTRUCTURE — ACTIVE 24/7</h1>
-        <p><span class="live-indicator"></span> SISTEM RADI BEZ PREKIDA | LOKACIJA: GLOBAL CLOUD</p>
-    </div>
+<div class="container">
+    <h2>What are we making?</h2>
+    <input type="text" class="server-input" placeholder="Server name (optional)">
 
-    <div class="feature-grid">
-        <!-- Hosting Sekcija -->
-        <div class="box">
-            <h2>🌐 HOSTING CENTAR</h2>
-            <p>Hostuj sajtove, botove i game servere (FiveM, MC, SAMP).</p>
-            <input type="text" placeholder="Ime projekta (npr. MojSajt)">
-            <button onclick="deploy()">DEPLOY 24/7</button>
+    <div class="grid">
+        <!-- Web App Kartica -->
+        <div class="card" onclick="openDeploy()">
+            <h3>🌐 Web App</h3>
+            <p>Hostujte ultra-brze sajtove koristeći LCI C++ Engine. Podržava custom .com domene.</p>
         </div>
 
-        <!-- Domain Sekcija -->
-        <div class="box">
-            <h2>🎫 REGISTRACIJA DOMENA</h2>
-            <p>Registruj pravi .com ili .lci domen.</p>
-            <div style="display: flex; gap: 5px;">
-                <input type="text" placeholder="tvoje-ime" style="flex: 2;">
-                <select style="flex: 1;">
-                    <option>.com</option>
-                    <option>.net</option>
-                    <option>.lci</option>
-                    <option>.org</option>
-                </select>
-            </div>
-            <button onclick="register()">KUPI DOMEN</button>
+        <div class="card">
+            <h3>🤖 Discord Bot</h3>
+            <p>24/7 Hosting za tvoje botove bez pregrevanja procesora.</p>
         </div>
-    </div>
 
-    <div class="box" style="margin-top: 25px;">
-        <h2>⚙️ VIRTUELNI RESURSI (BEZ SIMULACIJE)</h2>
-        <p>Trenutno aktivno: <strong>Nivada vGPU v1.0</strong> | Virtuelni RAM: <strong>1024 GB</strong>.</p>
-        <p>Mreža: <strong>ICMP/DNS Tunneling Active</strong> (Najbrži internet).</p>
+        <div class="card">
+            <h3>⛏️ Minecraft</h3>
+            <p>Najjači serveri sa nultim lagom i virtuelnim RAM-om.</p>
+        </div>
+
+        <div class="card">
+            <h3>🎮 FiveM / SAMP</h3>
+            <p>Specijalizovan hosting za game zajednice sa 0.1s odziva.</p>
+        </div>
     </div>
 </div>
 
+<!-- Modal za unos koda i domena -->
+<div id="deployModal" class="modal">
+    <h3>🚀 Deploy Web App</h3>
+    <p>Unesite vaš kod:</p>
+    <textarea placeholder="<html>...</html> ili C++ Code"></textarea>
+    <p>Custom Domain Settings:</p>
+    <input type="text" id="customDomen" class="server-input" placeholder="npr. tvoj-sajt.com">
+    <button class="deploy-btn" onclick="finishDeploy()">DEPLOY SAJT</button>
+</div>
+
 <script>
-    function deploy() { alert("LCI: Hostovanje pokrenuto na 24/7 serveru."); }
-    function register() { alert("LCI: Provera dostupnosti domena... Registracija u toku."); }
+    function openDeploy() { document.getElementById('deployModal').style.display = 'block'; }
+    function finishDeploy() {
+        let domen = document.getElementById('customDomen').value;
+        alert("LCI: Sajt uspešno hostovan!\nVaš link: http://" + domen);
+        document.getElementById('deployModal').style.display = 'none';
+    }
 </script>
 
 </body>
