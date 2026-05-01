@@ -5,15 +5,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OGNJEN AI V1 // TESLA KERNEL</title>
     <style>
-        :root { --neon: #00ffcc; --bg: #0d1117; --card: #161b22; --font: 'Consolas', 'Courier New', monospace; }
-        body { background: var(--bg); color: #c9d1d9; font-family: var(--font); margin: 0; display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden; }
-        .terminal { width: 90%; max-width: 900px; height: 70vh; background: var(--card); border: 1px solid #30363d; border-radius: 10px; display: flex; flex-direction: column; box-shadow: 0 0 50px rgba(0, 255, 204, 0.1); }
-        .top-bar { background: #010409; padding: 12px 20px; border-bottom: 1px solid #30363d; font-size: 13px; color: var(--neon); border-radius: 10px 10px 0 0; }
-        #chat-log { flex: 1; padding: 25px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; scroll-behavior: smooth; }
+        :root { 
+            --neon: #00ffcc; 
+            --bg: #0d1117; 
+            --card: #161b22; 
+            --font: 'Consolas', 'Courier New', monospace; 
+        }
+        body { 
+            background: var(--bg); 
+            color: #c9d1d9; 
+            font-family: var(--font); 
+            margin: 0; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            overflow: hidden; 
+        }
+        .terminal { 
+            width: 90%; 
+            max-width: 900px; 
+            height: 70vh; 
+            background: var(--card); 
+            border: 1px solid #30363d; 
+            border-radius: 10px; 
+            display: flex; 
+            flex-direction: column; 
+            box-shadow: 0 0 50px rgba(0, 255, 204, 0.1); 
+        }
+        .top-bar { 
+            background: #010409; 
+            padding: 12px 20px; 
+            border-bottom: 1px solid #30363d; 
+            font-size: 13px; 
+            color: var(--neon); 
+            border-radius: 10px 10px 0 0; 
+        }
+        #chat-log { 
+            flex: 1; 
+            padding: 25px; 
+            overflow-y: auto; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 15px; 
+            scroll-behavior: smooth; 
+        }
         .ai-msg { color: var(--neon); line-height: 1.5; }
         .user-msg { color: #ffffff; font-weight: bold; }
-        .input-area { background: #010409; padding: 20px; display: flex; align-items: center; border-top: 1px solid #30363d; border-radius: 0 0 10px 10px; }
-        input { flex: 1; background: transparent; border: none; color: white; outline: none; font-family: var(--font); font-size: 16px; }
+        .input-area { 
+            background: #010409; 
+            padding: 20px; 
+            display: flex; 
+            align-items: center; 
+            border-top: 1px solid #30363d; 
+            border-radius: 0 0 10px 10px; 
+        }
+        input { 
+            flex: 1; 
+            background: transparent; 
+            border: none; 
+            color: white; 
+            outline: none; 
+            font-family: var(--font); 
+            font-size: 16px; 
+        }
         .prefix { color: var(--neon); margin-right: 15px; font-weight: bold; }
     </style>
 </head>
@@ -22,7 +77,7 @@
     <div class="terminal">
         <div class="top-bar">ognjen-ai-v1@tesla-kernel: ~ / status: online</div>
         <div id="chat-log">
-            <div class="ai-line ai-msg">> SISTEM SPREMAN. Čekam komandu za hardversku konstrukciju...</div>
+            <div class="ai-msg">> SISTEM SPREMAN. Unesite komandu za konstrukciju hardvera ili softvera...</div>
         </div>
         <div class="input-area">
             <span class="prefix">>>></span>
@@ -39,20 +94,20 @@
                 const val = input.value;
                 input.value = '';
                 
-                // Prikaz korisničke komande
-                log.innerHTML += `<div class="user-line user-msg">>>> ${val}</div>`;
+                // 1. Prikaži šta je korisnik napisao
+                log.innerHTML += `<div class="user-msg">>>> ${val}</div>`;
                 log.scrollTop = log.scrollHeight;
 
-                // LINK SA TVOJE SLIKE:
-                // Putanja mora da gađa tvoj start endpoint na Modalu
+                // 2. Tvoj Modal URL sa slike {4D666D05-5D61-4B9C-9379-19D3ADA3FCA2}.png
                 const modalUrl = "https://ognjenlapcevic133--ognjen-tesla-god-mode-start.modal.run/api/chat?q=";
                 
                 try {
+                    // 3. Pozovi tvoj AI mozak na Modalu
                     const response = await fetch(modalUrl + encodeURIComponent(val));
                     const data = await response.json();
                     
-                    // Prikaz odgovora od tvog AI-ja
-                    log.innerHTML += `<div class="ai-line ai-msg">> ${data.odgovor || data.response}</div>`;
+                    // 4. Prikaži odgovor koji AI generiše (sakriven od pogleda)
+                    log.innerHTML += `<div class="ai-msg">> ${data.response || data.odgovor}</div>`;
                 } catch (err) {
                     log.innerHTML += `<div style="color: #ff4444;">> GREŠKA: Kernel nije prepoznat. Proveri Modal deployment.</div>`;
                     console.error("Greška:", err);
